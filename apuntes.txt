@@ -1,0 +1,74 @@
+npm install --save express-validator
+npm install --save mongoose
+---------------------------------------------------
+use node_db_practice;
+show tables;
+select * from tb_usuario; -- delete from tb_usuario where id_user>13
+SELECT count(*) as rownum,usuario,password  FROM tb_usuario WHERE tb_usuario.usuario ='wewe'
+-----------------------------------------------------
+CREATE TABLE books (
+id int(11) NOT NULL AUTO_INCREMENT,
+title varchar(255) NOT NULL,
+content LONGTEXT NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+);
+------------------------------------------------------
+
+https://codepen.io/yoshiokiyamusu/pen/XWbGZGE
+html:- - - - - - - - - - - - - - - - - - - - - - - - 
+  <button id="get">Get info<button>
+
+  <button id="post">POst DATA<button>  
+  <br>Formulario MySQL localhost (insert por api)<br>
+  <form action="?" method="post">
+    <label for="fname">Titulo:</label>
+    <input type="text" id="titulo" name="titulo"><br><br>
+    <label for="lname">Contenido:</label>
+    <input type="text" id="contenido" name="contenido"><br><br>
+    <input type="submit" id="post_form" value="Submit">
+  </form>
+
+javascript:- - - - - - - - - - - - - - - - - - - - - - - -
+    const getButton = document.getElementById('get');
+    const postButton = document.getElementById('post');
+    const postForm = document.getElementById('post_form');
+
+    getButton.addEventListener('click',()=>{
+      fetch('http://localhost:8080/feed/posts')
+        .then(res=>res.json())
+        .then(resData => console.log(resData))
+        .catch(err => console.log(err));
+    });
+
+    postButton.addEventListener('click',()=>{
+      fetch('http://localhost:8080/feed/post',{
+        method:'POST',
+        body:JSON.stringify({
+          title:'A Codepen POST',
+          content:'crear una web en otra web'
+        }),
+        headers:{'Content-Type':'application/json'}
+      })
+        .then(res=>res.json())
+        .then(resData => console.log(resData))
+        .catch(err => console.log(err));
+    });
+
+
+    postForm.addEventListener('click',()=>{
+      form_titulo = document.getElementById('titulo').value; 
+      form_content = document.getElementById('contenido').value;
+      
+      fetch('http://localhost:8080/feed/post',{
+        method:'POST',
+        body:JSON.stringify({
+          title:form_titulo,
+          content:form_content
+        }),
+        headers:{'Content-Type':'application/json'}
+      })
+        .then(res=>res.json())
+        .then(resData => console.log(resData))
+        .catch(err => console.log(err));
+    });
