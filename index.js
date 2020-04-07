@@ -16,8 +16,7 @@ const feedRoutes = require('./routes/feed');
 
 const app = express();
 
-// Settings
-app.set('port', process.env.PORT || 8080);
+
 
 //EJS view
 app.set('view engine', 'ejs');//*
@@ -42,4 +41,6 @@ app.use('/post_user', feedRoutes);/**/
 app.use(errorController.get404);/**/
 
 
-//app.listen(8080);
+app.listen(8080);
+// Settings
+app.set('port', process.env.PORT || 8080);
