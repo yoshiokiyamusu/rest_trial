@@ -6,6 +6,11 @@ show tables;
 select * from tb_usuario; -- delete from tb_usuario where id_user>13
 SELECT count(*) as rownum,usuario,password  FROM tb_usuario WHERE tb_usuario.usuario ='wewe'
 -----------------------------------------------------
+GITHUB
+FOLDER: yoshiokiyamusu/rest_trial
+git remote add origin https://github.com/yoshiokiyamusu/rest_trial.git
+git push -u origin master
+---------------------------------------------------------
 CREATE TABLE books (
 id int(11) NOT NULL AUTO_INCREMENT,
 title varchar(255) NOT NULL,
